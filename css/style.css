@@ -1,0 +1,141 @@
+/*
+px, em, rem, pt, %, vw & vh, cm, mm
+
+em  :   cadratin
+rem :   cadratin racine
+
+*/
+:root{
+    --police-principale: 'Arial, Helvetica, sans-serif';
+    --color-font: #222126;
+    --jaune-logo: #F2C438;
+    --orange-logo: #F2B544;
+    --gris-leger: rgb(242, 242,242); /* F2F2F2 */
+    --gris-leger-80: rgba(242, 242,242, 0.8); /* F2F2F2 */
+    font-size: 16px;
+}
+
+/* Police spéciale */
+@font-face{
+    font-family: 'Arkham_reg';
+    src :   url('../fonts/Arkham_reg.eot');
+    src :   url('../fonts/Arkham_reg.eot') format('embedded-opentype'), 
+            url('../fonts/Arkham_reg.woff2') format('woff2'),
+            url('../fonts/Arkham_reg.woff') format('woff'),
+            url('../fonts/Arkham_reg.svg#Arkham_reg') format('svg');
+}
+
+*::before, *::after, *{
+    box-sizing: border-box;
+}
+
+img{
+    max-width: 100%;
+}
+
+img.logo{
+    max-width: 25vw;
+    max-height: 200px;
+    min-width: 100px;
+}
+
+h1{
+    margin: 0;
+    text-align: center;
+    padding: 0 10px;
+    font-family: 'Arkham_reg';
+    color: var(--jaune-logo);
+}
+
+body{
+    font-family: var(--police-principale) ;
+    margin: 0;
+    background-color: #000;
+    background: linear-gradient(to right, rgba(34,33,38,0.6), rgba(0,0,0,1)),
+                url('../images/city-black-n-white.png') bottom left repeat-x;
+    
+}
+
+body > header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--color-font);
+}
+
+body > main{
+    width: 100%;
+    padding-right: .75rem;
+    padding-left: .75rem;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: var(--gris-leger-80);
+}
+
+body > nav > ul{
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    line-height: 2rem;
+    flex-wrap: wrap;
+    background-color: var(--color-font);
+}
+
+body > nav > ul > li > a, body > nav > ul > li > a:visited{
+    text-decoration: none;
+    padding: 0 15px;
+    display: block;
+    color: var(--jaune-logo);
+    text-transform: uppercase;
+}
+
+body > nav > ul > li > a:hover, body > nav > ul > li > a:focus{
+    background-color: var(--jaune-logo);
+    color: var(--color-font);
+}
+
+
+
+
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+    body > main {
+        max-width: 540px;
+    }
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    body > main {
+        max-width: 720px;
+    }
+ }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    body > main {
+        max-width: 960px;
+    }
+ }
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    body > main {
+        max-width: 1140px;
+    }
+ }
+
+/*  XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+    body > main {
+        max-width: 1320px;
+    }
+ }
