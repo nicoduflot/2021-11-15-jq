@@ -32,6 +32,32 @@ img{
     max-width: 100%;
 }
 
+.galerie{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: black;
+}
+
+figure{
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+}
+
+figcaption{
+    padding: 5px;
+    text-align: center;
+    background-color: var(--gris-leger);
+}
+
+figure img{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 img.logo{
     max-width: 25vw;
     max-height: 200px;
@@ -157,5 +183,11 @@ body > nav > ul > li > a:hover, body > nav > ul > li > a:focus{
 @media (min-width: 1400px) { 
     body > main, .header {
         max-width: 1320px;
+    }
+ }
+
+ @media (print){
+    body > header, body > nav, body > footer, article > footer{
+        display: none;
     }
  }
