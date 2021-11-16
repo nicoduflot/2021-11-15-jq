@@ -108,6 +108,20 @@ p.triangle::before{
     content: "";
 }
 
+.header, .footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer{
+    flex-wrap: wrap;
+}
+
 h1{
     margin: 0;
     text-align: center;
@@ -126,22 +140,10 @@ body{
     background-color: #000;
     background: linear-gradient(to right, rgba(34,33,38,0.6), rgba(0,0,0,1)),
                 url('../images/city-black-n-white.png') bottom left fixed repeat-x, #000;
-    
-    
 }
 
-body > header{
+body > header, body > footer{
     background-color: var(--color-font);
-}
-
-.header{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 body > main{
@@ -164,7 +166,11 @@ body > nav > ul{
     background-color: var(--color-font);
 }
 
-body > nav > ul > li > a, body > nav > ul > li > a:visited{
+body > nav > ul > li > a, 
+body > nav > ul > li > a:visited, 
+body > footer > .footer > ul > li > a,
+body > footer > .footer > ul > li > a:visited
+{
     text-decoration: none;
     padding: 0 15px;
     display: block;
@@ -172,37 +178,105 @@ body > nav > ul > li > a, body > nav > ul > li > a:visited{
     text-transform: uppercase;
 }
 
-body > nav > ul > li > a:hover, body > nav > ul > li > a:focus{
+body > nav > ul > li > a:hover, 
+body > nav > ul > li > a:focus, 
+body > footer > .footer > ul > li > a:hover,
+body > footer > .footer > ul > li > a:focus{
     background-color: var(--jaune-logo);
     color: var(--color-font);
 }
+
+body > main > section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+body > main section > article{
+    width: 100%;
+    padding: 5px;
+}
+
+body > footer > .footer > ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+body > footer > .footer > ul > li{
+    text-align: center;
+}
+
+body > footer > .footer > ul > li > a{
+    line-height: 2rem;
+}
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
-    body > main, .header {
+    body > main, .header, .footer {
         max-width: 540px;
     }
  }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-    body > main, .header {
+    body > main, .header, .footer {
         max-width: 720px;
+    }
+
+    body > main > section > article{
+        width: 50%;
+    }
+
+    body > main > section > article:last-child:nth-of-type(odd){
+        width: 100%;
+    }
+
+    body > main > section > article:last-child:nth-of-type(odd) > header > h2, 
+    body > main > section > article:last-child:nth-of-type(odd) > header > h3{
+        text-align: center;
+    }
+
+    body > footer > .footer > ul{
+        width: 33%;
+    }
+
+    body > footer > .footer > ul:first-child > li > a{
+        text-align: left;
+    }
+
+    body > footer > .footer > ul:last-child > li > a{
+        text-align: right;
     }
  }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
-    body > main, .header {
+    body > main, .header, .footer {
         max-width: 960px;
     }
  }
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
-    body > main, .header {
+    body > main, .header, .footer {
         max-width: 1140px;
     }
+
+    body > main > section > article{
+        width: 33%;
+    }
+
+    body > main > section > article:last-child:nth-child(2){
+        width: 66%;
+    }
+
+    body > main > section > article:last-child:nth-child(3){
+        width: 33%;
+    }
+
  }
 /*  XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) { 
-    body > main, .header {
+    body > main, .header, .footer {
         max-width: 1320px;
     }
  }
