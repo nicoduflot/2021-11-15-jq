@@ -145,6 +145,8 @@ unde eaque dignissimos qui!
                     </a>
                 </footer>
             </article>
+        </section>
+        <section>
             <article>
                 <header>
                     <h2>Les images</h2>
@@ -222,6 +224,65 @@ unde eaque dignissimos qui!
                         </video>
                         <figcaption>
                             Vidéo test Big Buck bunny
+                        </figcaption>
+                    </figure>
+                </main>
+                <footer>
+                    <a href="#">
+                        <button>
+                            Lire la suite 
+                        </button>
+                    </a>
+                </footer>
+            </article>
+            <article>
+                <header>
+                    <h2>Les vidéos embarquées</h2>
+                </header>
+                <main>
+                    <h3>Les iframe pour le contenu embarqué</h3>
+                    <p>
+                        Les iframes sont des cadres définis dans la page qui appellent 
+                        une ressource extérieure. cela ne se fait qu'à la condition que le 
+                        serveur hébergeur autorise le partage des ressources
+                    </p>
+                    <iframe src="./test.html" width="100%" height="200"></iframe>
+                    <iframe src="./documents/CRAM.pdf" width="100%" height="200"></iframe>
+                    <iframe src="./documents/texte.txt" width="100%" height="200"></iframe>
+                    <p>
+                        Quand on implémente le CSS créé par les vidéo embarquées de Dailymotion
+                    </p>
+                    <figure class="videoExt">
+                        <iframe src="https://www.youtube.com/embed/1H5g4Mh-G6I" 
+                        title="YouTube video player"
+                        frameborder="0" allowfullscreen></iframe>
+                    </figure>
+                    <!-- 
+                    <p>
+                        Sinon si on récupère directement le code des sites de vidéos :
+                    </p>
+                    <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/uvWbSwy3eWg" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+                    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+                        <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" 
+                        frameborder="0" type="text/html" 
+                        src="https://www.dailymotion.com/embed/video/x85jktm?autoplay=1" 
+                        width="100%" height="100%" 
+                        allowfullscreen allow="autoplay"></iframe>
+                    </div>
+                    -->
+                    <h3>L'audio en HTML</h3>
+                    <figure>
+                        <img src="./images/diablo_02.jpg" />
+                        <figcaption>
+                            <audio controls>
+                                <source src="./media/diablo_town.mp3" type="audio/mp3" />
+                            </audio>
                         </figcaption>
                     </figure>
                 </main>
