@@ -39,6 +39,11 @@ img{
     background-color: black;
 }
 
+.activeNavLink{
+    background-color: var(--jaune-logo);
+    color: var(--color-font);
+}
+
 figure.videoExt{
     position: relative;
     padding-bottom:56.25%;
@@ -120,6 +125,124 @@ p.triangle::before{
 
 .footer{
     flex-wrap: wrap;
+}
+
+.ruban{
+    width: 50%;
+}
+
+.ruban{
+    position: absolute;
+    text-align: center;
+    background-color: red;
+    box-shadow: rgba(0,0,0,0.4) 0 0 2px;
+    z-index: 2;
+}
+
+.ruban::before, .ruban::after{
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: -1rem;
+    border: 1.5rem solid red;
+    z-index: -1;
+}
+
+.ruban::before{
+    left:-2rem;
+    border-right-width: 1.5rem;
+    border-left-color: transparent;
+}
+
+.ruban::after{
+    right:-2rem;
+    border-left-width: 1.5rem;
+    border-right-color: transparent;
+}
+
+.ruban .ruban-contenu::before, .ruban .ruban-contenu::after{
+    border-color: darkred transparent transparent;
+    position: absolute;
+    display: block;
+    border-style: solid;
+    bottom: -1rem;
+    content: "";
+}
+
+#space-invader{
+    margin: 70px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    box-shadow: 0 0 0 10px red,
+    0 10px 0 10px red,
+    -25px 15px 0 5px red,
+    25px 15px 0 5px red,
+    -30px -30px 0 0 red,
+    30px -30px 0 0 red,
+    -20px -20px 0 0 red,
+    20px -20px 0 0 red,
+    -30px -10px 0 0 red,
+    -20px -10px 0 0 red,
+    20px -10px 0 0 red,
+    30px -10px 0 0 red,
+    -40px 0 0 0 red,
+    -30px 0 0 0 red,
+    30px 0 0 0 red,
+    40px 0 0 0 red,
+    -50px 10px 0 0 red,
+    -40px 10px 0 0 red,
+    40px 10px 0 0 red,
+    50px 10px 0 0 red,
+    -50px 20px 0 0 red,
+    50px 20px 0 0 red,
+    -50px 30px 0 0 red,
+    -30px 30px 0 0 red,
+    30px 30px 0 0 red,
+    50px 30px 0 0 red,
+    -20px 40px 0 0 red,
+    -10px 40px 0 0 red,
+    10px 40px 0 0 red,
+    20px 40px 0 0 red;
+}
+
+.ruban .ruban-contenu::before{
+    left: 0;
+    border-width: 1rem 0 0 1rem;
+}
+
+.ruban .ruban-contenu::after{
+    right: 0;
+    border-width: 1rem 1rem 0 0;
+}
+.ruban-contenu{
+
+}
+
+.badge, .imgBG, .imgMG, .imgFG{
+    width: 338px;
+    height: 338px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imgBG, .imgMG, .imgFG{
+    position: absolute;
+}
+
+.imgBG{
+    background: url('../images/superposition/logo-pt1.png');
+    z-index: 1;
+}
+
+.imgMG{
+    background: url('../images/superposition/logo-pt2.png');
+    z-index: 2;
+}
+
+.imgFG{
+    background: url('../images/superposition/logo-pt3.png');
+    z-index: 3;
 }
 
 h1{

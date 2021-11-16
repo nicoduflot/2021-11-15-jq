@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation HTML CSS3 JavaScript JQuery</title>
+    <link rel="stylesheet" href="./css/style.css" media="screen" />
+    <link rel="stylesheet" href="./css/all.css" />
+    <!-- script js -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function(){
+            console.log(window.location.pathname);
+            let pageActuelle = window.location.pathname;
+            let linkNav = document.querySelectorAll('body > nav > ul > li > a');
+            console.log(linkNav);
+            linkNav.forEach(element => {
+                let linkNavCheck = element.getAttribute('href');
+                console.log(linkNavCheck);
+                if(linkNavCheck.indexOf(pageActuelle) >= 0){
+                    console.log('test', linkNavCheck);
+                    element.classList.toggle('activeNavLink');
+                    element.setAttribute('disabled', 'disabled');
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <img src="./images/logo-batman.svg" alt="Logo batman SVG" class="logo" />
+            <h1>Formation HTML - CSS</h1>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./index.html" title="Lien vers la page d'accueil">Accueil</a></li>
+            <li><a href="./css.html" title="Le CSS en détail">CSS</a></li>
+            <li><a href="./bootstrap.html" title="Exemple de page bootstrap">Bootstrap</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <article>
+                <header>
+                    <h2>Batman contre le fantôme masqué</h2>
+                </header>
+                <main>
+                    <div style="margin: 20px 30px; height: 100px">
+                        <div class="ruban">
+                            <div class="ruban-contenu">
+                                <h3>Un titre en ruban</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Un space invader</h3>
+                    <div id="space-invader"></div>
+                    <h3>Images de fond superposées(comme des calques)</h3>
+                    <div class="badge">
+                        <div class="imgBG">
+
+                        </div>
+                        <div class="imgMG">
+                            
+                        </div>
+                        <div class="imgFG">
+                            
+                        </div>
+                    </div>
+                </main>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <ul>
+                <li><a href="./index.html" title="Lien vers la page d'accueil">Accueil</a></li>
+                <li><a href="./css.html" title="Le CSS en détail">CSS</a></li>
+                <li><a href="./bootstrap.html" title="Exemple de page bootstrap">Bootstrap</a></li>
+            </ul>
+            <ul>
+                <li><a href="#" title="Conditions générales de vente">CGV</a></li>
+                <li><a href="#" title="Conditions générales d'utilisation">CGU</a></li>
+                <li><a href="#" title="Réglement général sur la protection des données">RGPD</a></li>
+            </ul>
+            <ul>
+                <li><a href="#" title="Notre équipe">Qui sommes-nous !</a></li>
+                <li><a href="#" title="Nos valeurs">Valeurs</a></li>
+                <li><a href="#" title="Expression de la gratuité">Pigeons</a></li>
+            </ul>
+        </div>
+
+    </footer>
+</body>
+
+</html>
