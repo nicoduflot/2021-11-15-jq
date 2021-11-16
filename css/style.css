@@ -38,12 +38,40 @@ img.logo{
     min-width: 100px;
 }
 
+.rouge-gras{
+    color: red;
+    font-weight: bold;
+}
+
+.rouge-gras::before{
+    content: open-quote;
+}
+
+.rouge-gras::after{
+    content: close-quote;
+}
+
+p.triangle::before{
+    width: 0px;
+    height: 0px;
+    border: 5px solid transparent;
+    border-right-width: 0;
+    border-left-width: 10px;
+    border-left-color: #f00;
+    display: inline-block;
+    content: "";
+}
+
 h1{
     margin: 0;
     text-align: center;
     padding: 0 10px;
     font-family: 'Arkham_reg';
     color: var(--jaune-logo);
+}
+
+a button{
+    cursor: pointer;
 }
 
 body{
@@ -101,40 +129,30 @@ body > nav > ul > li > a:hover, body > nav > ul > li > a:focus{
     background-color: var(--jaune-logo);
     color: var(--color-font);
 }
-
-
-
-
-
-
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
     body > main, .header {
         max-width: 540px;
     }
  }
-
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
     body > main, .header {
         max-width: 720px;
     }
  }
-
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
     body > main, .header {
         max-width: 960px;
     }
  }
-
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
     body > main, .header {
         max-width: 1140px;
     }
  }
-
 /*  XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) { 
     body > main, .header {

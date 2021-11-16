@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formation HTML CSS3 JavaScript JQuery</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/all.css" />
 </head>
 <body>
     <header>
@@ -25,24 +26,71 @@
         <section>
             <article>
                 <header>
-                    <h2>Article</h2>
+                    <h2>Problèmes CSS courants</h2>
                 </header>
                 <main>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Reprehenderit sequi alias eligendi perferendis dignissimos
-                        fugiat, aperiam magni molestias ad inventore sint ex debitis
-                        sed libero explicabo nemo quos. Animi, reiciendis.
+                        Le calcul par défaut des tailles en CSS est content-box,
+                        il est conseillé de le passer en border-box
                     </p>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Voluptatibus possimus alias aperiam nisi sint praesentium
-                        pariatur repudiandae ipsum ab! Aperiam animi aut iusto et
-                        sunt. Iusto a praesentium nihil itaque.
+                        Les tailles calculées : si vous voulez utiliser des cadratin (em),
+                        il est plus sûr d'utiliser les cadratins racine (rem) car il sont toujours
+                        calculés par rapport au cadratin racine du user stylesheet
+                        et non pas le cadratin calculé du conteneur.
+                    </p>
+                    <h3>Les polices de caractère</h3>
+                    <p>
+                        On utilisera les propriétés @font-face pour déclarer en CSS une police
+                        de caractère dont les fichiers (eot, svg, ttf, woff, woff2) sont hébergés
+                        sur le site pour ne pas forcer l'utilsateur à télécharger et installer des fichiers
+                        qui sont peut-être corrompus ou porteur de virus.
                     </p>
                 </main>
                 <footer>
-
+                    <a href="#">
+                        <button>
+                            Lire la suite 
+                        </button>
+                    </a>
+                </footer>
+            </article>
+            <article>
+                <header>
+                    <h2>HTML - CSS sur le texte</h2>
+                </header>
+                <main>
+                    <p>
+                        Il existe quelques balises pour changer directement l'affichage du texte
+                        en HTML. Un texte en <b>gras (b)</b>, n'a aucune influence sur le SEO. 
+                        si on utilise <strong>strong</strong>, 
+                        le contenu de la balise influe sur le SEO.
+                    </p>
+                    <p>
+                        C'est pareil avec l'italique <i>Italique à l'affichage</i>, 
+                        l'italique avec une <em>emphase sémantique</em>.
+                    </p>
+                    <p>
+                        La balise <font color="#ff0000">font </font> n'est plus utilisée, 
+                        on va <span class="truc">utiliser</span> 
+                        <span class="rouge-gras">span associé à une classe</span>.
+                    </p>
+                    <p>
+                        <quote>
+                            <q>I'm Batman</q>
+                            <i>Batman</i> <i class="fas fa-mask"></i>
+                        </quote>
+                    </p>
+                    <p class="triangle">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nisi ratione neque eaque maiores, eos distinctio ipsum repellat. Libero saepe recusandae voluptates, voluptatum architecto illum. Vel esse excepturi sapiente molestias!
+                    </p>
+                </main>
+                <footer>
+                    <a href="#">
+                        <button>
+                            Lire la suite 
+                        </button>
+                    </a>
                 </footer>
             </article>
         </section>
