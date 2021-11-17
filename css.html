@@ -5,25 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formation HTML CSS3 JavaScript JQuery</title>
-    <link rel="stylesheet" href="./css/style.css" media="screen" />
+
     <link rel="stylesheet" href="./css/all.css" />
+    <link rel="stylesheet" href="./css/style.css" media="screen" />
+    
+
     <!-- script js -->
     <script>
-        window.addEventListener('DOMContentLoaded', function(){
-            console.log(window.location.pathname);
-            let pageActuelle = window.location.pathname;
-            let linkNav = document.querySelectorAll('body > nav > ul > li > a');
-            console.log(linkNav);
-            linkNav.forEach(element => {
-                let linkNavCheck = element.getAttribute('href');
-                console.log(linkNavCheck);
-                if(linkNavCheck.indexOf(pageActuelle) >= 0){
-                    console.log('test', linkNavCheck);
-                    element.classList.toggle('activeNavLink');
-                    element.setAttribute('disabled', 'disabled');
-                }
-            });
-        });
+        
 
     </script>
 </head>

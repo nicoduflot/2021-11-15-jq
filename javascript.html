@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation HTML CSS3 JavaScript JQuery</title>
+    <link rel="stylesheet" href="./css/style.css" media="screen" />
+    <link rel="stylesheet" href="./css/all.css" />
+    <script src="./js/script.js"></script>
+    <script>
+        loaded(function(){
+            loadNav('body > nav');
+            loadNav('body > footer > div nav.navFooter');
+            /* JS - Introduction */
+            /* JS est un langage non typé */
+            /* JS fait du transtypage */
+            let monEntier = 12;
+            console.log(typeof(monEntier+1));
+            monEntier += 'test';
+            console.log(typeof(monEntier));
+            monEntier = '12';
+            console.log(typeof(monEntier++));
+            console.log(monEntier);
+            monEntier = parseInt(monEntier);
+            console.log(typeof(monEntier));
+
+            var nom = 'Duflot';
+            let prenom = 'Nicolas';
+            //let nomPrenom = nom + ' ' + prenom;
+            let nomPrenom = `${nom} \n${prenom}`;
+            console.log(nomPrenom);
+            
+            function afficheNom(){
+                let prenom = 'Doudou';
+                console.log(prenom);
+            }
+
+            afficheNom();
+            console.log(prenom);
+
+            /*
+
+            Type dans JS
+            [Primitif]
+            int, float  => number (entier, float)
+            bool        => bouléen
+            null        => valeur nulle
+            String      => chaîne de caractère
+
+            [Référence]
+            Array   => tableau 
+            Object  => objet
+            Json    => JavaScript Object Notation
+
+            */
+
+            // Opérateurs
+
+            /*
+            Mathématiques
+            + 
+            - 
+            /
+            % 
+            * 
+            ** (remplacement de Math.pow() 2 puissance 3 Math.pow(2,3) ) 
+            => 2**3
+
+            Incrémentation
+            i++,
+            ++i
+            Décrémentation
+
+            i--
+            --i
+            
+            Logiques : 
+            &&  (ET)
+            ||  (OU)
+            !   (NON)
+            ^   (OU exclusif Binaire XOR)
+
+            a ^ b   => si a et !b => true
+                    => si !a et b => true
+                    => si !a et !b => false
+                    => si a et b => false
+            
+            Comparaison 
+            < > <= >=
+            == !=       => comparatif de valeur             ('2' == 2)  => true
+            === !==     => comparatif de valeur et de type  ('2' === 2) => false
+                                                            (2 === 2)   => true
+
+            *
+            */
+
+            /*
+            //hérité de Java
+            //en java
+            String a = 'Chaîne';
+            a.equal('Chaîne'); // true
+
+            String b = null;
+            b.equal('Chaîne'); // nullPointerException
+
+            //yoda code
+            'Chaîne'.equal(b); // false
+
+            */
+
+            // avant es6 var tab = new Array('val', 12);
+            // depuis la norme es6
+            
+            let cars = ['Peugeot', 'Citroën', 'Ford', 'Renault'];
+            console.log(cars);
+            console.table(cars);
+            console.log(cars[1]);
+            console.log(`Le tableau cars : ${cars} contient ${cars.length} élément(s)`);
+
+            // les tableau sont l'équivalent d'objets Itérables
+            // les boucles
+            // for, while, do while, for in, forEach, es6 => for of
+
+            console.log('---------- boucle for --------------');
+            for(let i = 0; i < cars.length; i++){
+                console.log(`la valeur cars[${i}] : ${cars[i]}`);
+            }
+
+            console.log('---------- boucle in ---------------');
+            for(let index in cars){
+                console.log(`la valeur cars[${index}] : ${cars[index]}`);
+            }
+
+            /*
+            // on peut aussi utilser le for in pour capter les 
+            // attributs et les méthodes d'un objet
+            
+            */
+
+            let obj = {
+                nom: 'Duflot',
+                prenom: 'Nicolas',
+                presentation: function(){
+                    return `je m'appelle ${this.nom}`;
+                }
+            };
+
+            console.log(obj);
+            console.log(obj.presentation());
+
+            for(let key in obj){
+                if(Object.hasOwnProperty.call(obj, key)){
+                    let element = obj[key];
+                    console.log(element);
+                }
+            }
+
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <img src="./images/logo-batman.svg" alt="Logo batman SVG" class="logo" />
+            <h1>Formation HTML - CSS</h1>
+        </div>
+    </header>
+    <nav>
+        
+    </nav>
+    <main>
+        <section>
+            <article>
+                <header>
+                    <h2>Variables & opérateurs</h2>
+                </header>
+                <main>
+                    <h3>Ecmascript</h3>
+                    <p>
+                        Ecmascript (es) est une norme sur laquelle s'appuie JS.
+                        (Actionscript => flash, TypeScript).
+                        Par exemple, écrire des chaînes de caractères en JS on va utiliser ", soit ', soit ` .
+                    </p>
+                    <p>
+                        la dernière norme es => 2017 (es7 très peux de différence avec es6 )
+                    </p>
+                    <ul>
+                        <li>es1 - 1997</li>
+                        <li>es2 - 1999</li>
+                        <li>es4 - version abandonnée</li>
+                        <li>es5 - 2009</li>
+                        <li>es6 - 2015</li>
+                        <li>es7 - 2017</li>
+                    </ul>
+                    <p>
+                        Jusqu'en 2010, JS était très mal vu des développeurs ( peu normé,
+                        trop permissif )
+                    </p>
+                    <p>
+                        L'arrivée Google chrome, avec de la part de google la volonté
+                        de refaire fonctionner correctement JS. En créant le moteur d'interprétation 
+                        JS v8.
+                        Il a boosté les capacitées de JS et son exécution
+                    </p>
+                    <p>
+                        Le moteur v8 à permit l'arrivée d'un nouveau langage 
+                        de programmation qui s'appuis sur JS mais qui s'éxécute sur le serveur : 
+                        NodeJs (2009)
+                    </p>
+                    <p>
+                        la convention de code es6 est dispo sur github 
+                        <a href="https://github.com/elierotenberg/coding-styles/blob/master/es6.md" 
+                        target="_blank">
+                            es6
+                        </a>
+                    </p>
+                </main>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <nav class="navFooter">
+                
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="#" title="Conditions générales de vente">CGV</a></li>
+                    <li><a href="#" title="Conditions générales d'utilisation">CGU</a></li>
+                    <li><a href="#" title="Réglement général sur la protection des données">RGPD</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="#" title="Notre équipe">Qui sommes-nous !</a></li>
+                    <li><a href="#" title="Nos valeurs">Valeurs</a></li>
+                    <li><a href="#" title="Expression de la gratuité">Pigeons</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </footer>
+</body>
+
+</html>

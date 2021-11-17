@@ -5,7 +5,7 @@ rem :   cadratin racine
 
 */
 :root{
-    --police-principale: 'Arial, Helvetica, sans-serif';
+    --police-principale: Arial, Helvetica, sans-serif;
     --color-font: #222126;
     --jaune-logo: #F2C438;
     --orange-logo: #F2B544;
@@ -39,10 +39,7 @@ img{
     background-color: black;
 }
 
-.activeNavLink{
-    background-color: var(--jaune-logo);
-    color: var(--color-font);
-}
+
 
 figure.videoExt{
     position: relative;
@@ -215,9 +212,6 @@ p.triangle::before{
     right: 0;
     border-width: 1rem 1rem 0 0;
 }
-.ruban-contenu{
-
-}
 
 .badge, .imgBG, .imgMG, .imgFG{
     width: 338px;
@@ -258,7 +252,7 @@ a button{
 }
 
 body{
-    font-family: var(--police-principale) ;
+    font-family: var(--police-principale);
     margin: 0;
     background-color: #000;
     background: linear-gradient(to right, rgba(34,33,38,0.6), rgba(0,0,0,1)),
@@ -291,8 +285,8 @@ body > nav > ul{
 
 body > nav > ul > li > a, 
 body > nav > ul > li > a:visited, 
-body > footer > .footer > ul > li > a,
-body > footer > .footer > ul > li > a:visited
+body > footer > .footer > nav > ul > li > a,
+body > footer > .footer > nav > ul > li > a:visited
 {
     text-decoration: none;
     padding: 0 15px;
@@ -301,10 +295,21 @@ body > footer > .footer > ul > li > a:visited
     text-transform: uppercase;
 }
 
+body > footer > .footer > nav > ul{
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0;
+}
+
 body > nav > ul > li > a:hover, 
 body > nav > ul > li > a:focus, 
-body > footer > .footer > ul > li > a:hover,
-body > footer > .footer > ul > li > a:focus{
+body > footer > .footer > nav > ul > li > a:hover,
+body > footer > .footer > nav > ul > li > a:focus{
+    background-color: var(--jaune-logo);
+    color: var(--color-font);
+}
+
+body > nav > ul > li > a.activeNavLink{
     background-color: var(--jaune-logo);
     color: var(--color-font);
 }
@@ -335,6 +340,8 @@ body > footer > .footer > ul > li{
 body > footer > .footer > ul > li > a{
     line-height: 2rem;
 }
+
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
     body > main, .header, .footer {
@@ -364,11 +371,11 @@ body > footer > .footer > ul > li > a{
         width: 33%;
     }
 
-    body > footer > .footer > ul:first-child > li > a{
+    body > footer > .footer > nav.navFooter > ul > li > a{
         text-align: left;
     }
 
-    body > footer > .footer > ul:last-child > li > a{
+    body > footer > .footer > nav > ul > li > a{
         text-align: right;
     }
  }
