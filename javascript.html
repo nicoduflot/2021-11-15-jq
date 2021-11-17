@@ -156,6 +156,180 @@
                 }
             }
 
+            console.log('---------- boucle of es6 -----------');
+            for(let value of cars){
+                console.log(`la valeur actuelle : ${value}`);
+            }
+
+            // méthode d'itération avec les tableaux
+            // itération
+            console.log('---------- méthode forEach avec les tableaux -----------');
+            cars.forEach( function(element){
+                console.log(`l'élément actuelle dans cars est : ${element}`);
+            } );
+
+            // .entries() es6 : vient du modèle objet
+            // permet d'extraire les les clefs et valeurs des éléments du tableau
+            // dans un tableau
+            console.log('---------- méthode entries avec les tableaux -----------');
+            for(let entry of cars.entries()){
+                console.log(entry);
+                console.log(entry[0]);
+                console.log(entry[1]);
+            }
+
+            // méthodes tableaux 
+            // manipulation des élément
+
+            // ajout d'élément
+            cars[cars.length] = 'Hyundai';
+
+            cars.push('Seat');
+            cars.push('Fiat', 'Toyota');
+
+            console.log(cars);
+
+            // supprimer des éléments dans un tableau
+            // .pop(), .shift(), .splice()
+            // .pop() extrait la dernière valeur du d'un tableau
+            let extractLast = cars.pop();
+            console.log(extractLast);
+            console.log(cars);
+
+            // .shift()
+            //extrait la première valeur d'un tableau et recalcule les indices
+            let extractFirst = cars.shift();
+            console.log(extractFirst);
+            console.log(cars);
+
+            // .splice() 1 : extraire des valeurs dans le tableau (retourne un tableau)
+            let removed = cars.splice(cars.indexOf('Ford'), 2);
+            console.log(cars);
+            console.log(removed);
+            
+            // .splice() 2 : remplace des valeurs dans le tableau (retourne un tableau)
+            let replaced = cars.splice(cars.indexOf('Citroën'), 2, 'Alpine', 'Mazda');
+            console.log(cars);
+            console.log(replaced);
+            
+            // .splice() 3 : insertion de valeurs dans le tableau
+            cars.splice(
+                cars.indexOf('Mazda'), 
+                0, 
+                extractLast,
+                extractFirst, 
+                removed[0], 
+                removed[1], 
+                replaced[0], 
+                replaced[1]);
+            console.log(cars);
+
+            console.log(`Mazda se trouve à l'index : ${cars.indexOf('Mazda')}`);
+            console.log(`Nissan se trouve à l'index : ${cars.indexOf('Nissan')}`);
+
+            // pour copier un tableau il ne faut pas
+            let tab01 = [1,2,3,4,5];
+            console.log(tab01);
+            let tab02 = tab01; //tab02 n'est copie mais un alias (pointeur ou référence)  du tableau
+            tab02.pop();
+            console.log(tab01);
+
+            tab01 = [1,2,3,4,5];
+            console.log(tab01);
+            tab02 = tab01.slice(); //slice copie chaque élément du tableau pour l'ajouter dans une autre tableau
+            tab02.pop();
+            console.log(tab01);
+
+            // les tableaux à plusieurs dimensions ?
+
+            let tab2d = [ ['a', 'b', 'c'], [11, 12 , 14, 15], [10, 23, 56, 4]];
+
+            console.log(tab2d);
+            console.table(tab2d);
+            console.table(tab2d[1][1]);
+
+            // int tabInt(10,10); // en C++
+            console.log('---------- parcourir tab2d -----------');
+            for (let i = 0; i < tab2d.length; i++) {
+                for (let j = 0; j < tab2d[i].length; j++) {
+                    console.log(tab2d[i][j]);
+                }
+            }
+
+            // recherche d'un élément avec
+            // .find()
+            console.log('----- .find() ------');
+            let arrayNum = [5, 8, 12, 130, 3, 44];
+
+            let found = arrayNum.find( function(element){
+                return element >= 20;
+            });
+
+            console.log(found);
+
+            // recherche d'une collection d'élément(s) avec
+            // .filter()
+            console.log('----- .filter() ------');
+
+            let filter = arrayNum.filter( function(element){
+                return element >= 20;
+            });
+
+            console.log(filter);
+
+            /* l'opérateur arrow */
+
+            /*
+            function(element){
+                return element >= 20;
+            }
+            (element)=> { 
+                let test = '';
+                return element >= 20;
+            }
+            element => element >= 20;
+            */
+
+            console.log(arrayNum.filter( element => element >= 5));
+
+            // .map()
+            let numbers = [1, 2, 56, 4, 123];
+            let newNumbers = numbers.map( function(value, index, array){
+                console.log(index, value, array);
+                return value*10;
+            });
+
+            console.log(numbers);
+            console.log(newNumbers);
+
+            // les conséquences
+            let objet = {
+                numbers: [1,2,3],
+                times: 3,
+                pourChaque: function(){
+                    let _this = this;
+                    for(let i = 0; i < this.numbers.length; i++){
+                        console.log(`dans le for, this : ${this} et this.numbers[i] : ${this.numbers[i]}`);
+                    }
+                    this.numbers.forEach( function(value){
+                        console.log(`dans le forEach, this : ${this} et value*this.times : ${value*this.times}`);
+                        console.log(`dans le forEach, this : ${_this} et value*_this.times : ${value*_this.times}`);
+                    } );
+                },
+                pourChaqueBis: function(){
+                    for(let i = 0; i < this.numbers.length; i++){
+                        console.log(`dans le for, this : ${this} et this.numbers[i] : ${this.numbers[i]}`);
+                    }
+                    this.numbers.forEach( value => {
+                        console.log(`dans le forEach, this : ${this} et value*this.times : ${value*this.times}`);
+                    } );
+                }
+            };
+
+            console.log(objet);
+            console.log(objet.pourChaque());
+            console.log(objet.pourChaqueBis());
+
         });
     </script>
 </head>
