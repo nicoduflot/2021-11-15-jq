@@ -52,6 +52,38 @@
                 console.log(sessionStorage);
             });
 
+            // localStorage 
+            let inputLocalUser = s('#localUser');
+            let dataLocalUserName = s('#dataLocalUserName');
+            let btnLocalUserName = s('#btnLocal');
+
+            dataLocalUserName.innerText = sessionStorage.getItem('localUserName') || 'Pas d\'utilisateur enregistré';
+            
+            btnLocalUserName.addEventListener('click', function(evenement){
+                console.log(evenement);
+                if(inputLocalUser.value !== ''){
+                    console.log('Enregistrement en local du userName');
+                    localStorage.setItem('localUserName', inputLocalUser.value);
+                    dataLocalUserName.innerText = inputLocalUser.value;
+                    inputLocalUser.value = '';
+                    console.log(localStorage);
+                }
+            });
+            
+            s('#btnClearLocalUserName').addEventListener('click', function(){
+                console.log(localStorage);
+                console.log('Vider userName de la local');
+                delete localStorage['localUserName'];
+                console.log(localStorage);
+            });
+
+            s('#btnClearLocal').addEventListener('click', function(){
+                console.log(localStorage);
+                console.log('Vider local');
+                localStorage.clear();
+                console.log(localStorage);
+            });
+
         });
     </script>
 </head>
@@ -94,6 +126,36 @@
                     </p>
                     <p>
                         Actual sessionUserName : <span id="dataSessionUserName"></span>
+                    </p>
+                </main>
+            </article>
+            <article>
+                <header>
+                    <h2>Le stockage des données en JS</h2>
+                </header>
+                <main>
+                    <h3>localStorage</h3>
+                    <p>
+                        <label>UserName :</label>
+                        <input type="text" id="localUser" value="" />
+                    </p>
+                    <p>
+                        <button id="btnLocal">
+                            Save localUserName
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearLocalUserName">
+                            Clear localUserName
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearLocal">
+                            Clear local
+                        </button>
+                    </p>
+                    <p>
+                        Actual localUserName : <span id="dataLocalUserName"></span>
                     </p>
                 </main>
             </article>
