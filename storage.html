@@ -84,6 +84,45 @@
                 console.log(localStorage);
             });
 
+            // pour créer un cookie, il lui faut un nom, 
+            // une date d'expiration, un chemin, un type d'accessibilité du cookie 
+            // et si on utilise https ou pas pour la requête depuis des sites tiers
+            // création dans script.js des fonctione de gestion de cookie
+            /*
+            let dateTest = new Date();
+            console.log(dateTest);
+            dateTest.setTime( dateTest.getTime() + ( 1 * 24 * 60 * 60 * 1000) + (60 * 60 * 1000));
+            console.log(dateTest.toUTCString());
+            */
+
+            let inputCookieValue = s('#cookieValue');
+            let cookieValueSpan = s('#cookieValueSpan');
+
+            //btnCookie btnClearCookieValue btnDeleteCookie
+
+            s('#btnCookie').addEventListener('click', function(){
+                if(inputCookieValue !== ''){
+                    setCookie('monCookie', inputCookieValue.value, 1);
+                    inputCookieValue.value = '';
+                    cookieValueSpan.innerText = getCookie('monCookie');
+                    //console.log(document.cookie);
+                }
+            });
+
+            s('#btnClearCookieValue').addEventListener('click', function(){
+                setCookie('monCookie', '', 1);
+                inputCookieValue.value = '';
+                cookieValueSpan.innerText = getCookie('monCookie');
+                //console.log(document.cookie);
+            });
+
+            s('#btnDeleteCookie').addEventListener('click', function(){
+                setCookie('monCookie');
+                inputCookieValue.value = '';
+                cookieValueSpan.innerText = '';
+                //console.log(document.cookie);
+            });
+
         });
     </script>
 </head>
@@ -156,6 +195,36 @@
                     </p>
                     <p>
                         Actual localUserName : <span id="dataLocalUserName"></span>
+                    </p>
+                </main>
+            </article>
+            <article>
+                <header>
+                    <h2>Le stockage des données en JS</h2>
+                </header>
+                <main>
+                    <h3>Les cookies</h3>
+                    <p>
+                        <label>Cookie Value :</label>
+                        <input type="text" id="cookieValue" value="" />
+                    </p>
+                    <p>
+                        <button id="btnCookie">
+                            Save Cookie value
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearCookieValue">
+                            Clear cookie value
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnDeleteCookie">
+                            Delete cookie
+                        </button>
+                    </p>
+                    <p>
+                        Actual cookie value : <span id="cookieValueSpan"></span>
                     </p>
                 </main>
             </article>
