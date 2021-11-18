@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation HTML CSS3 JavaScript JQuery</title>
+    <link rel="stylesheet" href="./css/style.css" media="screen" />
+    <link rel="stylesheet" href="./css/all.css" />
+    <script src="./js/script.js"></script>
+    <script>
+        loaded(function(){
+            loadNav('body > nav');
+            loadNav('body > footer > div nav.navFooter');
+            
+            let inputSessionUser = s('#sessionUser');
+            let dataSessionUserName = s('#dataSessionUserName');
+            let btnSessionUserName = s('#btnSession');
+            /*
+            if(userName = sessionStorage.getItem('sessionUserName')){
+                dataSessionUserName.innerText = userName;
+            }else{
+                dataSessionUserName.innerText = 'Pas d\'utilisateur enregistré';
+            }
+            */
+            //on peut écrire aussi : 
+
+            dataSessionUserName.innerText = sessionStorage.getItem('sessionUserName') || 'Pas d\'utilisateur enregistré';
+            
+            btnSessionUserName.addEventListener('click', function(evenement){
+                console.log(evenement);
+                if(inputSessionUser.value !== ''){
+                    console.log('Enregistrement en session du userName');
+                    sessionStorage.setItem('sessionUserName', inputSessionUser.value);
+                    dataSessionUserName.innerText = inputSessionUser.value;
+                    inputSessionUser.value = '';
+                    console.log(sessionStorage);
+                }
+            });
+            
+            s('#btnClearSessionUserName').addEventListener('click', function(){
+                console.log(sessionStorage);
+                console.log('Vider userName de la session');
+                delete sessionStorage['sessionUserName'];
+                console.log(sessionStorage);
+            });
+
+            s('#btnClearSession').addEventListener('click', function(){
+                console.log(sessionStorage);
+                console.log('Vider session');
+                sessionStorage.clear();
+                console.log(sessionStorage);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <img src="./images/logo-batman.svg" alt="Logo batman SVG" class="logo" />
+            <h1>Formation HTML - CSS</h1>
+        </div>
+    </header>
+    <nav>
+        
+    </nav>
+    <main>
+        <section>
+            <article>
+                <header>
+                    <h2>Le stockage des données en JS</h2>
+                </header>
+                <main>
+                    <h3>sessionStorage</h3>
+                    <p>
+                        <label>UserName :</label>
+                        <input type="text" id="sessionUser" value="" />
+                    </p>
+                    <p>
+                        <button id="btnSession">
+                            Save sessionUserName
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearSessionUserName">
+                            Clear sessionUserName
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearSession">
+                            Clear session
+                        </button>
+                    </p>
+                    <p>
+                        Actual sessionUserName : <span id="dataSessionUserName"></span>
+                    </p>
+                </main>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <nav class="navFooter">
+                
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="#" title="Conditions générales de vente">CGV</a></li>
+                    <li><a href="#" title="Conditions générales d'utilisation">CGU</a></li>
+                    <li><a href="#" title="Réglement général sur la protection des données">RGPD</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="#" title="Notre équipe">Qui sommes-nous !</a></li>
+                    <li><a href="#" title="Nos valeurs">Valeurs</a></li>
+                    <li><a href="#" title="Expression de la gratuité">Pigeons</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </footer>
+</body>
+
+</html>

@@ -8,11 +8,14 @@
 
     <link rel="stylesheet" href="./css/all.css" />
     <link rel="stylesheet" href="./css/style.css" media="screen" />
-    
+    <script src="./js/script.js"></script>
 
     <!-- script js -->
     <script>
-        
+        loaded(function(){
+            loadNav('body > nav');
+            loadNav('body > footer > div nav.navFooter');
+        });
 
     </script>
 </head>
@@ -25,11 +28,6 @@
         </div>
     </header>
     <nav>
-        <ul>
-            <li><a href="./index.html" title="Lien vers la page d'accueil">Accueil</a></li>
-            <li><a href="./css.html" title="Le CSS en détail">CSS</a></li>
-            <li><a href="./bootstrap.html" title="Exemple de page bootstrap">Bootstrap</a></li>
-        </ul>
     </nav>
     <main>
         <section>
@@ -65,21 +63,23 @@
     </main>
     <footer>
         <div class="footer">
-            <ul>
-                <li><a href="./index.html" title="Lien vers la page d'accueil">Accueil</a></li>
-                <li><a href="./css.html" title="Le CSS en détail">CSS</a></li>
-                <li><a href="./bootstrap.html" title="Exemple de page bootstrap">Bootstrap</a></li>
-            </ul>
-            <ul>
-                <li><a href="#" title="Conditions générales de vente">CGV</a></li>
-                <li><a href="#" title="Conditions générales d'utilisation">CGU</a></li>
-                <li><a href="#" title="Réglement général sur la protection des données">RGPD</a></li>
-            </ul>
-            <ul>
-                <li><a href="#" title="Notre équipe">Qui sommes-nous !</a></li>
-                <li><a href="#" title="Nos valeurs">Valeurs</a></li>
-                <li><a href="#" title="Expression de la gratuité">Pigeons</a></li>
-            </ul>
+            <nav class="navFooter">
+                
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="#" title="Conditions générales de vente">CGV</a></li>
+                    <li><a href="#" title="Conditions générales d'utilisation">CGU</a></li>
+                    <li><a href="#" title="Réglement général sur la protection des données">RGPD</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="#" title="Notre équipe">Qui sommes-nous !</a></li>
+                    <li><a href="#" title="Nos valeurs">Valeurs</a></li>
+                    <li><a href="#" title="Expression de la gratuité">Pigeons</a></li>
+                </ul>
+            </nav>
         </div>
 
     </footer>
