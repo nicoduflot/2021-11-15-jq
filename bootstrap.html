@@ -7,82 +7,373 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formation HTML CSS3 JavaScript JQuery</title>
     <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bs-style.css" />
     <script src="./js/jquery.3.5.1.js"></script>
     <script src="./js/bootstrap.bundle.js"></script>
     <script src="./js/popper.js"></script>
+    <script>
+        /* document.addEventListener('DOMContentLoaded', function(){});  */
+        /*
+        jQuery(document).ready(function(){
+            console.log('Le DOM est prêt');
+        });
+        */
+        // première version simplifiée
+        /*
+        jQuery( function(){
+            console.log('Le DOM est prêt');
+        });
+        */
+        // version simplifiée en utilisant un alias :
+        /*
+        $( function(){
+            console.log('Le DOM est prêt');
+        } );
+        */
+        /* version simplifiée avec alias évitant les conflit de nommage $ de l'alias */
+        jQuery(function ($) {
+            console.log('Le DOM est prêt');
+            $('#firstBlood').click(function (event) {
+                console.log(event.originalEvent);
+                console.log($(this));
+                console.log(`On a cliqué sur le bouton first blood ${this}!`);
+            });
+
+            // cibler tous les paragraphe de la page sauf le paragraphe avec l'id special
+            let allPButSpecial = $('p:not(.special)');
+            //console.log(allPButSpecial);
+            allPButSpecial.click(function () {
+                console.log($(this).text());
+                $('p:not(.special)').each(function () {
+                    $(this).css('color', 'inherit');
+                });
+                $(this).css('color', 'red');
+            });
+
+            $('button[type="submit"]').click(function (event) {
+                event.preventDefault();
+                let nom = $('#nom');
+                let prenom = $('#prenom');
+                console.log(`nom : ${nom}, prenom : ${prenom}`);
+                if ('' === nom && '' === prenom) {
+                    console.log('nom et prenom OK');
+                    $('#formContact').submit();
+                } else {
+                    console.log('nom ou prénom');
+                }
+            });
+
+            $(document).keyup((touche) => {
+                let toucheAppuyee = touche.key;
+                //console.log(touche);
+                //console.log(toucheAppuyee);
+                let toucheKeyCode = touche.which || touche.keyCode;
+                $('#quelleTouche').text(`la touche appuyée est : ${toucheAppuyee} avec le charCode : ${toucheKeyCode}`);
+            });
+
+            $('#clickMeVirtuel').click( function(){
+                console.log('tu as cliqué sur le paragraphe');
+            });
+
+            $('#clickMeVirtuel').trigger('click');
+
+        })
+    </script>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header class="bg-dark text-light">
     <div class="container">
         <div class="row">
-            <a class="navbar-brand col-sm-4" href="./">
-                <div class="row">
-                    <img src="./images/logo-batman.svg" alt="Logo batman SVG" class="img-fluid col-4" />
-                    <p class="col-8 .h2">Formation HTML - CSS</p>
-                </div>
-            </a>
-            <div class="col-sm-7 text-right">
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <img src="./images/logo-batman.svg" alt="Logo batman SVG" id="logo" class="img-fluid col-2" />
+            <h1 class="col-10 text-center" id="titre-logo">Formation HTML - CSS</h1>
+        </div>
+    </div>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">CSS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">JS Intro</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">JS Storage</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Bootstrap <span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CSS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">JS Intro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">JS Storage</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Bootstrap <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
         </div>
 
     </div>
 </nav>
-<main>
-    <section>
-        <article>
+<main class="container">
+    <section class="row">
+        <article class="col-lg-4 col-sm-6">
             <header>
-                <h2></h2>
+                <h2>JQuery : Un framework</h2>
             </header>
             <main>
+                <p>
+                    JQuery est un framework, un cadre de travail ou un ensemble de fonctions
+                    javascript organisées en bibliothèques.
+                    Le but de JQuery est de simplifier le JS interactif,
+                    en simplifiant l'écriture des appels de fonctions, d'évènements, la manipulation
+                    du DOM, etc.
+                </p>
+            </main>
+        </article>
+        <article class="col-lg-4 col-sm-6">
+            <header>
+                <h2>Éviter les conflits</h2>
+            </header>
+            <main>
+                <p>
+                    Il est possible d'utiliser un alias pour utiliser JQuery : $()
+                    Mais cet alias est souvent utilisé par beaucoup d'autres bibliothèques Js qui
+                    pourraient être appelée en même temps que JQuery. En changeant la déclaration on peut
+                    facilement éviter ce conflit
+                </p>
+            </main>
+        </article>
+        <article class="col-lg-4 col-sm-6">
+            <header>
+                <h2>Principe de fonctionnement</h2>
+            </header>
+            <main>
+                <p>
+                    JQuery reponse principalement sur l'alias $(), on va ciblé à l'aide des sélecteurs
+                    HTML les éléments de la page sur lesquels interviadra le script.
+                </p>
+            </main>
+            <button id="firstBlood" class="btn btn-batman">Cliquez ici</button>
+        </article>
+    </section>
+    <section class="row">
+        <article class="col-lg-4 col-sm-6">
+            <header>
+                <h2>Les sélecteurs CSS</h2>
+            </header>
+            <main>
+                <p>
+                    On peut utiliser des sélecteurs semblables aux sélécteurs CSS pour cibles les éléments.
+                    Un élément peut être ciblé en balise &lt;p&gt;,
+                    par id en utilisant #, par classe avec le . (point) .
+                </p>
+                <p>
+                    Tous les paragraphe de la page ont maintenant une action
+                    liée à l'évènement "click".
+                </p>
+                <p class="special">
+                    Paragraphe spécial
+                </p>
+            </main>
+        </article>
+        <article class="col-lg-4 col-sm-6">
+            <h2>Cas des formulaires</h2>
+            <form method="GET" id="formContact">
+                <p>
+                    <label class="form-label">
+                        Nom
+                    </label>
+                    <input type="text" class="form-control" id="nom" name="nom" />
+                </p>
+                <p>
+                    <label class="form-label">
+                        Prénom
+                    </label>
+                    <input type="text" id="prenom" class="form-control" name="prenom" />
+                </p>
+                <button type="submit" id="submitForm" name="submitForm" class="btn btn-batman" value="Envoyer">
+                    Envoyer
+                </button>
+            </form>
+        </article>
+        <article class="col-lg-4 col-sm-6">
+            <header>
+                <h2>Les event jQuery</h2>
+            </header>
+            <main>
+                <h2>Définition d'un évènement</h2>
+                <p>
+                    Un évènement est une action remplie par le navigateur
+                    ou via le navigateur : depuis la souris, clavier, clic sur la page, etc.
+                </p>
+            </main>
+        </article>
+        <article class="col-lg-4 col-sm-6">
+            <header>
+                <h2>Évènements sur la souris</h2>
+            </header>
+            <main>
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Fonction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Clic</td>
+                            <td>click()</td>
+                        </tr>
+                        <tr>
+                            <td>Double clic</td>
+                            <td>dblclick()</td>
+                        </tr>
+                        <tr>
+                            <td>Survol de la souris</td>
+                            <td>hover()</td>
+                        </tr>
+                        <tr>
+                            <td>Rentrer dans un élément</td>
+                            <td>mouseenter()</td>
+                        </tr>
+                        <tr>
+                            <td>Quitter un élément</td>
+                            <td>mouseleave()</td>
+                        </tr>
+                        <tr>
+                            <td>Presser un bouton de la souris</td>
+                            <td>mousedown()</td>
+                        </tr>
+                        <tr>
+                            <td>Relâcher un bouton de la souris</td>
+                            <td>mouseup()</td>
+                        </tr>
+                        <tr>
+                            <td>Scroller (utiliser la roulette)</td>
+                            <td>scroll()</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </main>
+        </article>
+        <article class="col-lg-4 col-sm-6">
+            <header>
+                <h2>Évènement au clavier</h2>
+            </header>
+            <main>
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Fonction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Touche du clavier est enfoncée</td>
+                            <td>keydown()</td>
+                        </tr>
+                        <tr>
+                            <td>Maintient d'une touche enfoncée</td>
+                            <td>keypress()</td>
+                        </tr>
+                        <tr>
+                            <td>Relâchement d'une touche préalablement enfoncée</td>
+                            <td>keyup()</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Quelle touche ?</h3>
+                <p>
+                    Pour lire la touche utilisée par l'utilisateur,il faut faire attention car la
+                    fonction a utiliser sur l'évènement diffère selon les navigateurs.
+                    Heureusement, seulement deux fonction différentes et non une par
+                    navigateur existant.
+                </p>
+                <p id="quelleTouche">
 
+                </p>
+            </main>
+        </article>
+        <article class="col-lg-4 col-sm-6">
+            <header>
+                <h2>Évènements sur les formulaires</h2>    
+            </header>
+            <main>
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Fonction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Focalisation</td>
+                            <td>focus()</td>
+                        </tr>
+                        <tr>
+                            <td>Sélection (texte dans input type texte ou textarea)</td>
+                            <td>select()</td>
+                        </tr>
+                        <tr>
+                            <td>Changement de valeur</td>
+                            <td>change()</td>
+                        </tr>
+                        <tr>
+                            <td>Envoi du formulaire</td>
+                            <td>submit()</td>
+                        </tr>
+                    </tbody>
+                </table>
             </main>
         </article>
     </section>
+    <section class="col-lg-4 col-sm-6">
+        <header>
+            <h2>
+                Déclenchement virtuel
+            </h2>
+        </header>
+        <main>
+            <p id="clickMeVirtuel">
+                On peut déclencher virtuellement des évènements associés à des éléments.
+            </p>
+        </main>
+    </section>
 </main>
-<footer>
-    <div class="footer">
-        <nav class="navFooter">
+<footer class="bg-dark text-light">
+    <div class="container">
+        <div class="row">
+            <nav class="col-sm-4">
+                <ul>
+                    <li><a href="./index.html" title="Lien vers la page d'accueil">Accueil</a></li>
+                    <li><a href="./css.html" title="Le CSS en détail">CSS</a></li>
+                    <li><a href="./javascript.html" title="Javascript introduction">JS Intro</a></li>
+                    <li><a href="./storage.html" title="Javascript storage">JS Storage</a></li>
+                    <li><a href="./bootstrap.html" title="Exemple de page bootstrap">Bootstrap</a></li>
+                </ul>
+            </nav>
+            <nav class="col-sm-4">
+                <ul>
+                    <li><a href="#" title="Conditions générales de vente">CGV</a></li>
+                    <li><a href="#" title="Conditions générales d'utilisation">CGU</a></li>
+                    <li><a href="#" title="Réglement général sur la protection des données">RGPD</a></li>
+                </ul>
+            </nav>
+            <nav class="col-sm-4">
+                <ul>
+                    <li><a href="#" title="Notre équipe">Qui sommes-nous !</a></li>
+                    <li><a href="#" title="Nos valeurs">Valeurs</a></li>
+                    <li><a href="#" title="Expression de la gratuité">Pigeons</a></li>
+                </ul>
+            </nav>
+        </div>
 
-        </nav>
-        <nav>
-            <ul>
-                <li><a href="#" title="Conditions générales de vente">CGV</a></li>
-                <li><a href="#" title="Conditions générales d'utilisation">CGU</a></li>
-                <li><a href="#" title="Réglement général sur la protection des données">RGPD</a></li>
-            </ul>
-        </nav>
-        <nav>
-            <ul>
-                <li><a href="#" title="Notre équipe">Qui sommes-nous !</a></li>
-                <li><a href="#" title="Nos valeurs">Valeurs</a></li>
-                <li><a href="#" title="Expression de la gratuité">Pigeons</a></li>
-            </ul>
-        </nav>
     </div>
 
 </footer>

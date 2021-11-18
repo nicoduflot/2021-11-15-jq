@@ -1,0 +1,58 @@
+:root{
+    --color-font: #222126;
+    --jaune-logo: #F2C438;
+    --orange-logo: #F2B544;
+    --orange-btn: #f0a926;
+    --gris-leger: rgb(242, 242,242); /* F2F2F2 */
+    --gris-leger-80: rgba(242, 242,242, 0.8); /* F2F2F2 */
+    font-size: 16px;
+}
+
+/* Police spéciale */
+@font-face{
+    font-family: 'Arkham_reg';
+    src :   url('../fonts/Arkham_reg.eot');
+    src :   url('../fonts/Arkham_reg.eot') format('embedded-opentype'), 
+            url('../fonts/Arkham_reg.woff2') format('woff2'),
+            url('../fonts/Arkham_reg.woff') format('woff'),
+            url('../fonts/Arkham_reg.svg#Arkham_reg') format('svg');
+}
+
+.bg-dark {
+	background-color: var(--color-font) !important;
+}
+
+.text-light, .text-light a, .text-light a:visited{
+	color: var(--jaune-logo) !important;
+}
+
+.btn-batman {
+	color: var(--color-font);
+	background-color: var(--jaune-logo);
+	border-color: var(--color-font);
+}
+
+.btn-batman:hover {
+	background-color: var(--orange-btn);
+}
+
+h1{
+    font-family: 'Arkham_reg';
+}
+
+body{
+    background-color: #000;
+    background: linear-gradient(to right, rgba(34,33,38,0.6), rgba(0,0,0,1)),
+                url('../images/city-black-n-white.png') bottom left fixed repeat-x, #000;
+}
+
+body > header{
+    padding-top: 10px;
+}
+
+body > main{
+    background-color: var(--gris-leger-80);
+    margin: 0.65rem 0;
+    padding-bottom: 0.65rem;
+}
+
