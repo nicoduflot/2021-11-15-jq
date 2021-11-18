@@ -333,6 +333,64 @@
             // destructuration
             let liste = [1, 2, 3, 4];
 
+            // mettre chacune des valeur dans une variable a, b, c
+            /*
+            let a = liste[0], b = liste[1], c = liste[2];
+            */
+            let [a, b, c] = liste;
+            console.log(`a : ${a}, b : ${b}, c : ${c}`);
+
+            let [d, e, , f, g] = liste;
+            console.log(`d : ${d}, e : ${e}, f : ${f}, g :${g}`);
+
+            let [h, i, j, k = 0, l = 5] = liste;
+            console.log(`h : ${h}, i : ${i}, j : ${j}, k :${k}, l :${l} `);
+
+            function testDestructuration(...valeurs){
+                let [auto = true, test = 1, tabOption = []] = valeurs;
+                console.log(`auto = ${auto}, test = ${test}, tabOption = ${tabOption}, valeurs = ${valeurs}`);
+            }
+
+            testDestructuration(false, 2, [56, 24, 'oui']);
+
+            let number1 = 42;
+            let number2 = 12;
+            console.log(`avant => number1 : ${number1}, number2 : ${number2}`);
+            [number1, number2] = [number2, number1];
+            console.log(`après => number1 : ${number1}, number2 : ${number2}`);
+
+            // destructuration d'objet
+            let spy = {
+                firstName: 'Bond',
+                lastName: 'James',
+                job: 'Agent Secret',
+                helloBond: function(value){
+                    return `Hello ${value}`;
+                }
+            };
+
+            console.log(spy);
+            console.log(spy.firstName);
+            let {firstName, lastName, job, helloBond} = spy;
+            console.log(firstName);
+            console.log(helloBond('Peppa Pig'));
+
+            // pour créer des alias dans la destructuration d'objet
+
+            let {
+                lastName: nomEspion,
+                firstName: prenomEspion,
+                job: boulot,
+                pseudo = '007',
+                helloBond: salutation
+            } = spy;
+
+            console.log(`nomEspion : ${nomEspion}`);
+            console.log(`prenomEspion : ${prenomEspion}`);
+            console.log(`boulot : ${boulot}`);
+            console.log(`salutation('Monney Penny') : ${salutation('Monney Penny')}`);
+
+            
 
         });
     </script>
