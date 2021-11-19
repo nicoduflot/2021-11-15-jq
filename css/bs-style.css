@@ -36,6 +36,11 @@
 	background-color: var(--orange-btn);
 }
 
+.dropdown-item.active, .dropdown-item:active {
+	color: var(--color-font);
+	background-color: var(--jaune-logo);
+}
+
 h1{
     font-family: 'Arkham_reg';
 }

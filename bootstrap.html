@@ -11,6 +11,7 @@
     <script src="./js/jquery.3.5.1.js"></script>
     <script src="./js/bootstrap.bundle.js"></script>
     <script src="./js/popper.js"></script>
+    <script src="./js/jqscript.js"></script>
     <script>
         /* document.addEventListener('DOMContentLoaded', function(){});  */
         /*
@@ -71,7 +72,7 @@
                 $('#quelleTouche').text(`la touche appuyée est : ${toucheAppuyee} avec le charCode : ${toucheKeyCode}`);
             });
 
-            $('#clickMeVirtuel').click( function(){
+            $('#clickMeVirtuel').click(function () {
                 console.log('tu as cliqué sur le paragraphe');
             });
 
@@ -98,19 +99,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Accueil</a>
+                    <a class="nav-link" href="./">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CSS</a>
+                    <a class="nav-link" href="./css.html">CSS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">JS Intro</a>
+                    <a class="nav-link" href="./javascript.html">JS Intro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">JS Storage</a>
+                    <a class="nav-link" href="./storage.html">JS Storage</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Bootstrap <span class="sr-only">(current)</span></a>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-expanded="false">
+                        JQuery
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item active" href="./bootstrap.html">Bootstrap</a>
+                        <a class="dropdown-item" href="./jqajax.html">AJAX JQ</a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -301,7 +309,7 @@
         </article>
         <article class="col-lg-4 col-sm-6">
             <header>
-                <h2>Évènements sur les formulaires</h2>    
+                <h2>Évènements sur les formulaires</h2>
             </header>
             <main>
                 <table cellpadding="0" cellspacing="0">

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation HTML CSS3 JavaScript JQuery</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bs-style.css" />
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/popper.js"></script>
+    <script src="./js/jqscript.js"></script>
+    <script>
+        jQuery(function ($) {
+            let xhr = getXhr();
+            // méthode 
+            document.querySelectorAll('button.read').forEach(btn => {
+                let result = document.querySelector('#result');
+                console.log(btn);
+                btn.addEventListener('click', function () {
+                    //xhr.responseType = ('json' !== btn.dataset.type)? '': 'json';
+                    // ajax peut eêtre ouvert en synchrone ou en asynchrone
+                    // par défaut c'est en asynchrone
+                    // méthode open(verbe HTTP, url, async(true / false), login, password)
+                    /*
+                    xhr.open('GET', btn.dataset.url, false);
+                    xhr.send();
+                    */
+                    // xhr reçoit une réponse à la requête envoyée par .send()
+                    /*
+                    document.querySelector('#result').innerHTML = xhr.responseText;
+                    */
+                    xhr.onreadystatechange = () => {
+                        //xhr.readystate 
+                        /*
+                        0 : unsent              -> .open() n'a pas encore été appelé
+                        1 : opened              -> .open() n'a été appelé
+                        2 : headers_received    -> les entêtes de la requête on été reçus
+                        2 : loading             -> la requête est en cours de traîtement
+                        4 : done                -> la requête est terminée 
+                        */
+                        // xhr.status est bon si le code de retour est égal à 200 (code retour Http)
+                        if (200 !== xhr.status) {
+                            result.innerHTML = `<b style="color:red;font-weight:bold">${xhr.status}</b>`;
+                        } else {
+                            result.innerHTML = `${xhr.responseText}`;
+                        }
+                    };
+                    xhr.onerror = () => {
+                        result.innerHTML = `<b style="color:red;font-weight:bold">
+                            Une erreur xhr.status : ${xhr.status}</b>`;
+                    };
+                    xhr.open('GET', btn.dataset.url);
+                    xhr.send();
+                });
+            });
+            // ajax avec jquery
+            let btnJQ = $('button.readJQ');
+            console.log(btnJQ);
+            let result = $('#result');
+            btnJQ.click((event) => {
+                console.log(event.currentTarget.dataset);
+                let sourceUrl = event.currentTarget.dataset.url;
+                let sourceType = event.currentTarget.dataset.type;
+                console.log(sourceType);
+                $.ajax({
+                    url: sourceUrl,
+                    type: 'GET',
+                    dataType: sourceType
+                })
+                .done( function(response){
+                    console.log('Connexion OK');
+                    if('json' === sourceType){
+                        let resultJQ = '';
+                        console.log(response);
+                        response.forEach(function(element){
+                            console.log(element.name);
+                            resultJQ += `${element.name} <br />`;
+                        });
+                        result.html(resultJQ);
+                    }else{
+                        result.html(response);
+                    }
+                })
+                .fail(function(error){
+                    console.log(`La requête s'est terminée en échec : ${error.responseText}`);
+                    resultJQ.html(error.responseText);
+                })
+                .always(function(){
+                    console.log('Requête effectuée');
+                });
+            });
+        });
+    </script>
+</head>
+<header class="bg-dark text-light">
+    <div class="container">
+        <div class="row">
+            <img src="./images/logo-batman.svg" alt="Logo batman SVG" id="logo" class="img-fluid col-2" />
+            <h1 class="col-10 text-center" id="titre-logo">Formation HTML - CSS</h1>
+        </div>
+    </div>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./css.html">CSS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./javascript.html">JS Intro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./storage.html">JS Storage</a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-expanded="false">
+                        JQuery
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./bootstrap.html">Bootstrap</a>
+                        <a class="dropdown-item active" href="./jqajax.html">AJAX JQ</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+<main class="container">
+    <section class="row">
+        <article class="col-sm-12">
+            <header>
+                <h2>Ajax avec Javascript</h2>
+            </header>
+            <main>
+                <p>
+                    Pour utiliser ajax avec js, sans regarder du côté des fonctions
+                    type fetch, il faut instancier une objet de type XmlHttpRequest (XHR).
+                    En code ça donnait
+                </p>
+                <pre>
+let xhr = null;
+// vérification du navigateur : supporte-t'il ajax
+if(window.XMLHttpRequest || window.ActiveXObject){
+    //le navigateur supporte ajax
+    if(window.ActiveXObject){
+        //navigateur microsoft type ie
+        try{
+            xhr = new ActiveXobject("Msxml2.XMLHTTP");
+        }catch(e){
+            xhr = new ActiveXobject("Microsoft.XMLHTTP");
+        }
+    }else{
+        //pas IE
+        xhr = new XmlHttpRequest();
+    }
+}else{
+    //pas d'ajax
+    alert("votre navigateur ne supporte pas l'objet XMLHttpRequest");
+    return;
+}
+                </pre>
+                <p>
+                    Cette fonction est étudiée pour prendre en compte les divers navigateurs et
+                    leurs compatibilité avec XHR
+                </p>
+            </main>
+        </article>
+    </section>
+    <section class="row">
+        <article class="col-sm-6">
+            <header>
+                <h2>Ajax JS - xhr : Xml Http Request</h2>
+            </header>
+            <main>
+                <p class="m-2">
+                    <button class="btn btn-secondary read" data-url="./documents/texte.txt" data-type="text">
+                        Lire le fichier texte
+                    </button>
+                </p>
+                <p class="m-2">
+                    <button class="btn btn-secondary read" data-url="https://jsonplaceholder.typicode.com/users"
+                        data-type="json">
+                        Lire appeler jsonPlaceHolder
+                    </button>
+                </p>
+                <p id="result">
+                </p>
+            </main>
+        </article>
+        <article class="col-sm-6">
+            <header>
+                <h2>Ajax JQuery - $.ajax()</h2>
+            </header>
+            <main>
+                <pre>
+jQuery( function($){
+    $.ajax();
+});
+                </pre>
+                <p>
+                    La fonction ajax() de JQuery contient les tests de compatibilité
+                    pour instancier XHR
+                </p>
+                <p>
+                    Lors de ces appels, il faut utiliser des paramètres, tel l'url de la source,
+                    la méthode (get pour récupérer les données, post pour en envoyer), etc.
+                </p>
+                <p class="m-2">
+                    <button class="btn btn-secondary readJQ" data-url="./documents/texte.txt" data-type="text">
+                        Lire le fichier texte
+                    </button>
+                </p>
+                <p class="m-2">
+                    <button class="btn btn-secondary readJQ" data-url="https://jsonplaceholder.typicode.com/users"
+                        data-type="json">
+                        Lire appeler jsonPlaceHolder
+                    </button>
+                </p>
+                <p id="resultJQ">
+                </p>
+            </main>
+        </article>
+    </section>
+    <section class="row">
+        <article class="col-lg-4 col-sm-6">
+
+        </article>
+        <article class="col-lg-4 col-sm-6">
+
+        </article>
+        <article class="col-lg-4 col-sm-6">
+
+        </article>
+        <article class="col-lg-4 col-sm-6">
+
+        </article>
+        <article class="col-lg-4 col-sm-6">
+
+        </article>
+        <article class="col-lg-4 col-sm-6">
+
+        </article>
+    </section>
+    <section class="col-lg-4 col-sm-6">
+
+    </section>
+</main>
+<footer class="bg-dark text-light">
+    <div class="container">
+        <div class="row">
+            <nav class="col-sm-4">
+                <ul>
+                    <li><a href="./index.html" title="Lien vers la page d'accueil">Accueil</a></li>
+                    <li><a href="./css.html" title="Le CSS en détail">CSS</a></li>
+                    <li><a href="./javascript.html" title="Javascript introduction">JS Intro</a></li>
+                    <li><a href="./storage.html" title="Javascript storage">JS Storage</a></li>
+                    <li><a href="./bootstrap.html" title="Exemple de page bootstrap">Bootstrap</a></li>
+                </ul>
+            </nav>
+            <nav class="col-sm-4">
+                <ul>
+                    <li><a href="#" title="Conditions générales de vente">CGV</a></li>
+                    <li><a href="#" title="Conditions générales d'utilisation">CGU</a></li>
+                    <li><a href="#" title="Réglement général sur la protection des données">RGPD</a></li>
+                </ul>
+            </nav>
+            <nav class="col-sm-4">
+                <ul>
+                    <li><a href="#" title="Notre équipe">Qui sommes-nous !</a></li>
+                    <li><a href="#" title="Nos valeurs">Valeurs</a></li>
+                    <li><a href="#" title="Expression de la gratuité">Pigeons</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+</footer>
+</body>
+
+</html>

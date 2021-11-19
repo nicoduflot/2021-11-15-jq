@@ -1,12 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./js/jquery-3.6.0.js"></script>
+    <script src="./js/jqscript.js"></script>
+    <script>
+        jQuery(function ($) {
+            // ajax avec jquery
+            let btnJQ = $('button.readJQ');
+            
+            let resultJQ = $('#resultJQ');
+            console.log(resultJQ);
+            btnJQ.click((event) => {
+                //console.log(event.currentTarget.dataset);
+                /*let sourceUrl = event.currentTarget.dataset.url;
+                let sourceType = event.currentTarget.dataset.url;*/
+                jQuery.ajax({
+                    //url: "./json/posts.json",
+                    url: "https://jsonplaceholder.typicode.com/posts",
+                    type: "GET",
+                    dataType: "json"
+                })
+                    .done(function (response) {
+                        console.log("connexion OK");
+                        resultJQ.html(response);
+                    })
+                    .fail(
+                        function (error) {
+                            //console.log("connexion KO");
+                            console.log(`La requête s'est terminée en échec : ${error.responseText}`)
+                            resultJQ.html(error.responseText);
+                        }
+                    )
+                    .always(function () {
+                        console.log("Requête effectuée");
+                    });
+            });
+        });
+    </script>
 </head>
+
 <body>
     Test.html
+    <p class="m-2">
+        <button class="btn btn-secondary readJQ" data-url="./documents/texte.txt" data-type="text">
+            Lire le fichier texte
+        </button>
+    </p>
+    <p class="m-2">
+        <button class="btn btn-secondary readJQ" data-url="https://jsonplaceholder.typicode.com/users" data-type="json">
+            Lire appeler jsonPlaceHolder
+        </button>
+    </p>
+    <p id="resultJQ">
+    </p>
 </body>
+
 </html>

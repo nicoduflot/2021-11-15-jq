@@ -26,6 +26,9 @@ function loadNav(selector){
     })
     .catch(function(error){
         console.log(error.message);
+    })
+    .finally(function(){
+        console.log('nav chargée');
     });
 }
 
