@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation HTML CSS3 JavaScript JQuery</title>
+    <link rel="stylesheet" href="./css/style.css" media="screen" />
+    <link rel="stylesheet" href="./css/all.css" />
+    <script src="./js/script.js"></script>
+    <script>
+        loaded(function(){
+            loadNav('body > nav');
+            loadNav('body > footer > div nav.navFooter');
+            
+            // ligne colonne rouge
+            let coordonnees = sAll('[data-column][data-line]');
+            coordonnees.forEach(element => {
+                element.addEventListener('mouseover', function(){
+                    let column = element.dataset.column;
+                    let line = element.dataset.line;
+                    sAll(`[data-column="${column}"]`).forEach( td => {
+                        td.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+                    });
+                    sAll(`[data-line="${line}"]`).forEach( td => {
+                        td.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+                    });
+                    s(`[data-line="${line}"][data-column="${column}"]`).style.backgroundColor = 'rgba(255, 0, 0, 1)';
+                });
+                element.addEventListener('mouseout', function(){
+                    coordonnees.forEach( td => {
+                        td.style.removeProperty('background-color');
+                    });
+                });
+            });
+
+            let colorNow = 'p4Red';
+            sAll('table.p4 th').forEach( function(tableCol){
+                let coord = 0;
+                tableCol.addEventListener('click', function(){
+                    coord = this.dataset.col;
+                    for(let i = 6; i > 0; i--){
+                        let cell = s(`td[data-col="${coord}"][data-row="${i}"]`);
+                        if( !cell.classList.contains('p4Red') && !cell.classList.contains('p4Blue') ){
+                            cell.classList.add(colorNow);
+                            colorNow = ('p4Red' === colorNow)? 'p4Blue': 'p4Red';
+                            break;
+                        }
+                    }
+                });
+            } );
+
+
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <img src="./images/logo-batman.svg" alt="Logo batman SVG" class="logo" />
+            <h1>Formation HTML - CSS</h1>
+        </div>
+    </header>
+    <nav>
+        
+    </nav>
+    <main>
+        <section>
+            <article>
+                <header>
+                    <h2>Data attributes</h2>
+                </header>
+                <main>
+                    <table class="pointeur">
+                        <tr>
+                            <td data-column="0" data-line="0">0 - 0</td>
+                            <td data-column="1" data-line="0">1 - 0</td>
+                            <td data-column="2" data-line="0">2 - 0</td>
+                            <td data-column="3" data-line="0">3 - 0</td>
+                            <td data-column="4" data-line="0">4 - 0</td>
+                        </tr>
+                        <tr>
+                            <td data-column="0" data-line="1">0 - 1</td>
+                            <td data-column="1" data-line="1">1 - 1</td>
+                            <td data-column="2" data-line="1">2 - 1</td>
+                            <td data-column="3" data-line="1">3 - 1</td>
+                            <td data-column="4" data-line="1">4 - 1</td>
+                        </tr>
+                        <tr>
+                            <td data-column="0" data-line="2">0 - 2</td>
+                            <td data-column="1" data-line="2">1 - 2</td>
+                            <td data-column="2" data-line="2">2 - 2</td>
+                            <td data-column="3" data-line="2">3 - 2</td>
+                            <td data-column="4" data-line="2">4 - 2</td>
+                        </tr>
+                        <tr>
+                            <td data-column="0" data-line="3">0 - 3</td>
+                            <td data-column="1" data-line="3">1 - 3</td>
+                            <td data-column="2" data-line="3">2 - 3</td>
+                            <td data-column="3" data-line="3">3 - 3</td>
+                            <td data-column="4" data-line="3">4 - 3</td>
+                        </tr>
+                        <tr>
+                            <td data-column="0" data-line="4">0 - 4</td>
+                            <td data-column="1" data-line="4">1 - 4</td>
+                            <td data-column="2" data-line="4">2 - 4</td>
+                            <td data-column="3" data-line="4">3 - 4</td>
+                            <td data-column="4" data-line="4">4 - 4</td>
+                        </tr>
+                    </table>
+                </main>
+            </article>
+            <article>
+                <header>
+                    <h2>Data Attributes</h2>
+                </header>
+                <main>
+                    <table class="p4">
+                        <thead>
+                            <tr>
+                                <th data-col="1"> ↓ </th>
+                                <th data-col="2"> ↓ </th>
+                                <th data-col="3"> ↓ </th>
+                                <th data-col="4"> ↓ </th>
+                                <th data-col="5"> ↓ </th>
+                                <th data-col="6"> ↓ </th>
+                                <th data-col="7"> ↓ </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-col="1" data-row="1">&nbsp;</td>
+                                <td data-col="2" data-row="1">&nbsp;</td>
+                                <td data-col="3" data-row="1">&nbsp;</td>
+                                <td data-col="4" data-row="1">&nbsp;</td>
+                                <td data-col="5" data-row="1">&nbsp;</td>
+                                <td data-col="6" data-row="1">&nbsp;</td>
+                                <td data-col="7" data-row="1">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td data-col="1" data-row="2">&nbsp;</td>
+                                <td data-col="2" data-row="2">&nbsp;</td>
+                                <td data-col="3" data-row="2">&nbsp;</td>
+                                <td data-col="4" data-row="2">&nbsp;</td>
+                                <td data-col="5" data-row="2">&nbsp;</td>
+                                <td data-col="6" data-row="2">&nbsp;</td>
+                                <td data-col="7" data-row="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td data-col="1" data-row="3">&nbsp;</td>
+                                <td data-col="2" data-row="3">&nbsp;</td>
+                                <td data-col="3" data-row="3">&nbsp;</td>
+                                <td data-col="4" data-row="3">&nbsp;</td>
+                                <td data-col="5" data-row="3">&nbsp;</td>
+                                <td data-col="6" data-row="3">&nbsp;</td>
+                                <td data-col="7" data-row="3">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td data-col="1" data-row="4">&nbsp;</td>
+                                <td data-col="2" data-row="4">&nbsp;</td>
+                                <td data-col="3" data-row="4">&nbsp;</td>
+                                <td data-col="4" data-row="4">&nbsp;</td>
+                                <td data-col="5" data-row="4">&nbsp;</td>
+                                <td data-col="6" data-row="4">&nbsp;</td>
+                                <td data-col="7" data-row="4">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td data-col="1" data-row="5">&nbsp;</td>
+                                <td data-col="2" data-row="5">&nbsp;</td>
+                                <td data-col="3" data-row="5">&nbsp;</td>
+                                <td data-col="4" data-row="5">&nbsp;</td>
+                                <td data-col="5" data-row="5">&nbsp;</td>
+                                <td data-col="6" data-row="5">&nbsp;</td>
+                                <td data-col="7" data-row="5">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td data-col="1" data-row="6">&nbsp;</td>
+                                <td data-col="2" data-row="6">&nbsp;</td>
+                                <td data-col="3" data-row="6">&nbsp;</td>
+                                <td data-col="4" data-row="6">&nbsp;</td>
+                                <td data-col="5" data-row="6">&nbsp;</td>
+                                <td data-col="6" data-row="6">&nbsp;</td>
+                                <td data-col="7" data-row="6">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </main>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <nav class="navFooter">
+                
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="#" title="Conditions générales de vente">CGV</a></li>
+                    <li><a href="#" title="Conditions générales d'utilisation">CGU</a></li>
+                    <li><a href="#" title="Réglement général sur la protection des données">RGPD</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="#" title="Notre équipe">Qui sommes-nous !</a></li>
+                    <li><a href="#" title="Nos valeurs">Valeurs</a></li>
+                    <li><a href="#" title="Expression de la gratuité">Pigeons</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </footer>
+</body>
+
+</html>
